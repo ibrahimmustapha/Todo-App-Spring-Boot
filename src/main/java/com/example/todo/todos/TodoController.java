@@ -26,9 +26,9 @@ public class TodoController {
         todoService.addNewTodo(todo);
     }
 
-    @PutMapping(path="/update")
-    public Todo updateTodo(@RequestBody Todo todo) {
-        return todoService.updateTodo(todo);
+    @PutMapping(path="/update/{id}", consumes={"application/json"})
+    public Todo updateTodo(@PathVariable("id") Integer todoId, @RequestBody Todo todo) {
+        return todoService.updateTodo(todo, todoId);
     }
 
     @DeleteMapping(path = "/delete/{id}")

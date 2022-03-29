@@ -1,6 +1,7 @@
 package com.example.todo.todos;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,12 +29,14 @@ public class TodoService {
             todoRepository.save(todo);
     }
 
-    public Todo updateTodo(Todo todo) {
-        Todo existingTodo = todoRepository.findById(todo.getId()).orElse(null);
+    public Todo updateTodo(Todo todo, Integer todoId) {
+        Todo existingTodo = todoRepository.findById(todoId)
+                        .orElseThrow(() -> new IllegalStateException("Employer not found for the id::" + todoId));
         existingTodo.setFullName(todo.getFullName());
         existingTodo.setEmail(todo.getEmail());
         existingTodo.setTodoMessage(todo.getTodoMessage());
-        return todoRepository.save(existingTodo);
+        Todo updatedTodo = todoRepository.save(existingTodo);
+        return updatedTodo;
     }
 
     public String deleteTodo(Integer id) {
@@ -41,5 +44,3 @@ public class TodoService {
         return "Todo deleted successfully " + id;
     }
 }
-
-// Belinda Malm - 10283690
