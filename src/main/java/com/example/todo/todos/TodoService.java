@@ -38,7 +38,7 @@ public class TodoService {
 
     public Todo updateTodo(Todo todo, Integer todoId) {
         Todo existingTodo = todoRepository.findById(todoId)
-                        .orElseThrow(() -> new IllegalStateException("Employer not found for the id::" + todoId));
+                        .orElseThrow(() -> new IllegalStateException("Todo not found for the id::" + todoId));
         existingTodo.setFullName(todo.getFullName());
         existingTodo.setEmail(todo.getEmail());
         existingTodo.setTodoMessage(todo.getTodoMessage());
