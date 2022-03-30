@@ -1,8 +1,6 @@
 package com.example.todo.todos;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,16 +16,19 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
+    // get all todos
     public List<Todo> getTodos() {
         return todoRepository.findAll();
     }
 
+    // get a todo
     public Todo getTodo(Integer todoId) {
         return todoRepository.findById(todoId)
                 .orElseThrow(() ->
-                    new IllegalStateException("Todo not found with id " + todoId));
+                    new IllegalStateException("Todo not found with id::" + todoId));
     }
 
+    // add new todo to the database
     public void addNewTodo(Todo todo) {
         Optional<Todo> studentOptional = todoRepository.findTodoByEmail(todo.getEmail());
         if (studentOptional.isPresent()) {
@@ -36,6 +37,7 @@ public class TodoService {
             todoRepository.save(todo);
     }
 
+    // update or edit existing todo
     public Todo updateTodo(Todo todo, Integer todoId) {
         Todo existingTodo = todoRepository.findById(todoId)
                         .orElseThrow(() -> new IllegalStateException("Todo not found for the id::" + todoId));
@@ -45,11 +47,13 @@ public class TodoService {
         return todoRepository.save(existingTodo);
     }
 
+    // delete a todo
     public String deleteTodo(Integer id) {
         todoRepository.deleteById(id);
         return "Todo deleted successfully " + id;
     }
 
+    // delete all todos in the database
     public void deleteAllTodos(Todo todo) {
         todoRepository.deleteAll();
     }

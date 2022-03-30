@@ -1,6 +1,7 @@
 package com.example.todo.todos;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class TodoController {
     }
 
     @GetMapping(path="/todo/{id}") // returns a single todo based on id
+    @ResponseStatus(value = HttpStatus.OK)
     public Todo getTodo(@PathVariable("id") Integer todoId) {
         return todoService.getTodo(todoId);
     }
