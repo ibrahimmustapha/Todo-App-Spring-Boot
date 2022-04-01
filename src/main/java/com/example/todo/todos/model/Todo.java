@@ -1,4 +1,4 @@
-package com.example.todo.todos;
+package com.example.todo.todos.model;
 
 import javax.persistence.*;
 

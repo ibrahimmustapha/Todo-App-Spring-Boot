@@ -1,5 +1,7 @@
-package com.example.todo.todos;
+package com.example.todo.todos.controller;
 
+import com.example.todo.todos.service.TodoService;
+import com.example.todo.todos.model.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

@@ -1,5 +1,7 @@
-package com.example.todo.todos;
+package com.example.todo.todos.service;
 
+import com.example.todo.todos.dao.TodoRepository;
+import com.example.todo.todos.model.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

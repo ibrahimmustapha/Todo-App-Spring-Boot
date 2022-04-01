@@ -1,5 +1,7 @@
-package com.example.todo.todos;
+package com.example.todo.todos.configuration;
 
+import com.example.todo.todos.dao.TodoRepository;
+import com.example.todo.todos.model.Todo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
